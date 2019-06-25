@@ -1,8 +1,11 @@
 import { IChainable } from './chain';
 import { style as typeStyle } from 'typestyle';
 import { is } from 'anux-common';
+import { NestedCSSProperties } from 'typestyle/lib/types';
 
-export function style(...objects: IChainable[]): string {
+type StyleObject = IChainable | NestedCSSProperties;
+
+export function style(...objects: StyleObject[]): string {
   if (objects.length === 0) { return ''; }
   return typeStyle(...objects);
 }
